@@ -26,7 +26,7 @@ bot.onText(/\/start/, async (msg) => {
   const firstName = msg.from.first_name || 'Mijoz';
 
   const welcomeMessage = `
-✨ <b>AURA Interior Architecture Studio</b> botiga xush kelibsiz, <b>${firstName}</b>!
+✨ <b>PLATINUM Interior Architecture Studio</b> botiga xush kelibsiz, <b>${firstName}</b>!
 
 Biz har bir xonadon, kottej va tijorat ob'ektlari uchun takrorlanmas, shinam hamda eksklyuziv interyer dizaynlari yaratamiz.
 
@@ -110,7 +110,7 @@ bot.on('callback_query', async (query) => {
   if (query.data === 'contact_arch') {
     await bot.sendMessage(chatId, `📞 <b>Bosh Dizayner:</b> +998(97)300-10-50\n💬 Telegram: @platinum_interior_and_arch`, { parse_mode: 'HTML' });
   } else if (query.data === 'show_location') {
-    await bot.sendMessage(chatId, `📍 <b>Bizning Offis:</b> Toshkent sh., Mirabad t., A.Temur ko'chasi 45-uy.\n⏰ Ish vaqti: 09:00 - 19:00 (Dush-Shanba)`, { parse_mode: 'HTML' });
+    await bot.sendMessage(chatId, `📍 <b>Bizning Offis:</b> Buxoro sh., Buxoro Savdo Majmuasi (Kritiy), Ibrohim Mo'minov ko'chasi\n⏰ <b>Ish vaqti:</b> 09:00 - 18:00 (Dush-Shanba)`, { parse_mode: 'HTML' });
   }
 
   await bot.answerCallbackQuery(query.id);
