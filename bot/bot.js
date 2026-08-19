@@ -47,7 +47,7 @@ Biz har bir xonadon, kottej va tijorat ob'ektlari uchun takrorlanmas, shinam ham
           }
         ],
         [
-          { text: '📞 Bosh arxitektor bilan bog\'lanish', callback_data: 'contact_arch' },
+          { text: '📞 Bosh dizayner bilan bog\'lanish', callback_data: 'contact_arch' },
           { text: '📍 Manzilimiz va Kontaktlar', callback_data: 'show_location' }
         ]
       ]
