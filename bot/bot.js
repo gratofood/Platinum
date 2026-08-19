@@ -30,13 +30,22 @@ bot.onText(/\/start/, async (msg) => {
 
 Biz har bir xonadon, kottej va tijorat ob'ektlari uchun takrorlanmas, shinam hamda eksklyuziv interyer dizaynlari yaratamiz.
 
-👇 Pastki chap burchakdagi <b>"Open"</b> (yoki Menu) tugmasini bosib Mini Saytimizga kirishingiz mumkin!
+👇 Pastdagi <b>"🏛 Interyer Mini Saytini Ochish"</b> tugmasini bosib:
+• 🖼 <b>Qilgan ishlarimiz</b> (Portfoliomizni ko'rishingiz);
+• 💰 <b>Narxlar va Kalkulyator</b> (Smetani hisoblashingiz);
+• 📝 <b>Buyurtma berishingiz</b> mumkin!
   `.trim();
 
   await bot.sendMessage(chatId, welcomeMessage, {
     parse_mode: 'HTML',
     reply_markup: {
       inline_keyboard: [
+        [
+          {
+            text: '🏛 Interyer Mini Saytini Ochish',
+            web_app: { url: webAppUrl }
+          }
+        ],
         [
           { text: '📞 Bosh arxitektor bilan bog\'lanish', callback_data: 'contact_arch' },
           { text: '📍 Manzilimiz va Kontaktlar', callback_data: 'show_location' }
@@ -99,7 +108,7 @@ bot.on('callback_query', async (query) => {
   const chatId = query.message.chat.id;
 
   if (query.data === 'contact_arch') {
-    await bot.sendMessage(chatId, `📞 <b>Bosh Arxitektor:</b> +998 (90) 123-45-67\n💬 Telegram: @aura_architecture_admin`, { parse_mode: 'HTML' });
+    await bot.sendMessage(chatId, `📞 <b>Bosh Dizayner:</b> +998(97)300-10-50\n💬 Telegram: @platinum_interior_and_arch`, { parse_mode: 'HTML' });
   } else if (query.data === 'show_location') {
     await bot.sendMessage(chatId, `📍 <b>Bizning Offis:</b> Toshkent sh., Mirabad t., A.Temur ko'chasi 45-uy.\n⏰ Ish vaqti: 09:00 - 19:00 (Dush-Shanba)`, { parse_mode: 'HTML' });
   }
