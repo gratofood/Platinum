@@ -30,22 +30,13 @@ bot.onText(/\/start/, async (msg) => {
 
 Biz har bir xonadon, kottej va tijorat ob'ektlari uchun takrorlanmas, shinam hamda eksklyuziv interyer dizaynlari yaratamiz.
 
-👇 Pastdagi <b>"🏛 Mini Saytni Ochish"</b> tugmasini bosib:
-• 🖼 <b>Qilgan ishlarimiz</b> (Portfoliomizni ko'rishingiz);
-• 💰 <b>Narxlar va Kalkulyator</b> (Smetani hisoblashingiz);
-• 📝 <b>Buyurtma berishingiz</b> mumkin!
+👇 Pastki chap burchakdagi <b>"Open"</b> (yoki Menu) tugmasini bosib Mini Saytimizga kirishingiz mumkin!
   `.trim();
 
   await bot.sendMessage(chatId, welcomeMessage, {
     parse_mode: 'HTML',
     reply_markup: {
       inline_keyboard: [
-        [
-          {
-            text: '🏛 Interyer Mini Saytini Ochish',
-            web_app: { url: webAppUrl }
-          }
-        ],
         [
           { text: '📞 Bosh arxitektor bilan bog\'lanish', callback_data: 'contact_arch' },
           { text: '📍 Manzilimiz va Kontaktlar', callback_data: 'show_location' }
