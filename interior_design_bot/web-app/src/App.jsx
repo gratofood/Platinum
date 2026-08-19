@@ -42,9 +42,9 @@ export default function App() {
       {/* Top Studio Header */}
       <header className="app-header">
         <div className="brand-wrapper">
-          <div className="brand-logo-badge">A</div>
+          <img src="/logo.png" alt="PLATINUM" className="brand-official-logo" />
           <div className="brand-title-group">
-            <h1>AURA</h1>
+            <h1>PLATINUM</h1>
             <span>INTERIOR ARCHITECTURE</span>
           </div>
         </div>
