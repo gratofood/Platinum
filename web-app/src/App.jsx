@@ -3,7 +3,7 @@ import Portfolio from './components/Portfolio';
 import Pricing from './components/Pricing';
 import OrderForm from './components/OrderForm';
 import { Grid, Tag, Send } from 'lucide-react';
-import logoImg from './logo.png';
+import { LOGO_BASE64 } from './logoData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('portfolio');
@@ -43,7 +43,7 @@ export default function App() {
       {/* Top Studio Header */}
       <header className="app-header">
         <div className="brand-wrapper">
-          <img src={logoImg} alt="PLATINUM Interior & Architecture" className="brand-official-logo" />
+          <img src={LOGO_BASE64} alt="PLATINUM Interior & Architecture" className="brand-official-logo" />
         </div>
 
         <div className="header-status-badge">
