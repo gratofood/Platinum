@@ -20,6 +20,12 @@ const bot = new TelegramBot(token, { polling: true });
 
 console.log('🚀 AURA Interior Design Telegram boti ishga tushdi...');
 
+// /id command to easily get Telegram Chat ID for Admin config
+bot.onText(/\/id/, async (msg) => {
+  const chatId = msg.chat.id;
+  await bot.sendMessage(chatId, `🆔 Sizning Telegram Chat ID manzilingiz: <code>${chatId}</code>`, { parse_mode: 'HTML' });
+});
+
 // /start command
 bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id;
