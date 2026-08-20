@@ -34,7 +34,7 @@ export default function OrderForm({ prefilledPackage, prefilledArea }) {
     }
   }, [prefilledPackage, prefilledArea]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.fullName || !formData.phone) {
       alert("Iltimos, ismingiz va telefon raqamingizni kiritishni unutmang!");
@@ -43,27 +43,85 @@ export default function OrderForm({ prefilledPackage, prefilledArea }) {
 
     setLoading(true);
 
-    const payload = {
-      action: 'NEW_DESIGN_ORDER',
-      fullName: formData.fullName,
-      phone: formData.phone,
-      propertyType: formData.propertyType,
-      area: `${formData.area} m²`,
-      packageType: formData.packageType,
-      comment: formData.comment,
-      tgUsername: tgUser?.username ? `@${tgUser.username}` : 'Noma\'lum',
-      createdAt: new Date().toLocaleString()
-    };
+    const BOT_TOKEN = '8904637807:AAE5vtKeRyR9YzlQkbfnfwweRc8N-BNqSmY';
+    const ADMIN_CHAT_ID = '6877877555';
 
-    setTimeout(() => {
-      // Send data back to Telegram Bot if inside WebApp
-      if (window.Telegram?.WebApp?.sendData) {
-        window.Telegram.WebApp.sendData(JSON.stringify(payload));
+    const usernameStr = tgUser?.username ? `@${tgUser.username}` : 'Noma\'lum';
+    const timeStr = new Date().toLocaleString();
+
+    const adminMsg = `
+🔔 <b>YANGI INTERYER DESIGN BUYURTMASI!</b>
+
+👤 <b>Mijoz:</b> ${formData.fullName} (${usernameStr})
+📞 <b>Telefon:</b> <code>${formData.phone}</code>
+🏠 <b>Ob'ekt:</b> ${formData.propertyType} (${formData.area} m²)
+💎 <b>Tarif:</b> ${formData.packageType}
+📝 <b>Izoh:</b> ${formData.comment || 'Yo\'q'}
+📅 <b>Vaqt:</b> ${timeStr}
+    `.trim();
+
+    try {
+      // 1. Send directly to Admin Chat ID
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: ADMIN_CHAT_ID,
+          text: adminMsg,
+          parse_mode: 'HTML'
+        })
+      });
+
+      // 2. Send confirmation to User if inside Telegram
+      if (tgUser?.id) {
+        const userMsg = `
+✅ <b>Buyurtmangiz muvaffaqiyatli qabul qilindi!</b>
+
+📋 <b>Buyurtma tafsilotlari:</b>
+👤 <b>Ism:</b> ${formData.fullName}
+📞 <b>Tel:</b> ${formData.phone}
+🏠 <b>Ob'ekt:</b> ${formData.propertyType} (${formData.area} m²)
+💎 <b>Tarif:</b> ${formData.packageType}
+${formData.comment ? `📝 <b>Izoh:</b> ${formData.comment}` : ''}
+
+⏰ Mutaxassisimiz tez orada siz bilan bog'lanadi!
+        `.trim();
+
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: tgUser.id,
+            text: userMsg,
+            parse_mode: 'HTML'
+          })
+        });
       }
 
+      // Also trigger sendData if available
+      if (window.Telegram?.WebApp?.sendData) {
+        try {
+          window.Telegram.WebApp.sendData(JSON.stringify({
+            action: 'NEW_DESIGN_ORDER',
+            fullName: formData.fullName,
+            phone: formData.phone,
+            propertyType: formData.propertyType,
+            area: `${formData.area} m²`,
+            packageType: formData.packageType,
+            comment: formData.comment,
+            tgUsername: usernameStr,
+            createdAt: timeStr
+          }));
+        } catch (e) {
+          // ignore inline sendData error
+        }
+      }
+    } catch (error) {
+      console.error('Telegram API xatoligi:', error);
+    } finally {
       setLoading(false);
       setSubmitted(true);
-    }, 600);
+    }
   };
 
   if (submitted) {
