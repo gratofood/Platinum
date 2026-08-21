@@ -43,7 +43,7 @@ export default function App() {
       {/* Top Studio Header */}
       <header className="app-header">
         <div className="brand-wrapper">
-          <img src={LOGO_BASE64} alt="PLATINUM Interior & Architecture" className="brand-official-logo" />
+          <img src="/photos/platinum-official-logo.jpg?v=2" alt="PLATINUM Interior & Architecture" className="brand-official-logo" />
         </div>
 
         <div className="header-status-badge">
