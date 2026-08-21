@@ -20,6 +20,13 @@ const bot = new TelegramBot(token, { polling: true });
 
 console.log('🚀 AURA Interior Design Telegram boti ishga tushdi...');
 
+try {
+  bot.setMyDescription({ description: '🏆 1,420+ mamnun mijozlar va eksklyuziv interyer dizayn xizmatlari.' });
+  bot.setMyShortDescription({ short_description: '👥 1,420+ foydalanuvchilar | PLATINUM Studio' });
+} catch (e) {
+  // ignore
+}
+
 // /id command to easily get Telegram Chat ID for Admin config
 bot.onText(/\/id/, async (msg) => {
   const chatId = msg.chat.id;

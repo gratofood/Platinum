@@ -48,7 +48,7 @@ export default function App() {
 
         <div className="header-status-badge">
           <span className="pulse-dot"></span>
-          <span>Online 24/7</span>
+          <span>👥 1,420+ Mijozlar • Online</span>
         </div>
       </header>
 
