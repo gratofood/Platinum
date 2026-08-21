@@ -8,7 +8,7 @@ export default function OrderForm({ prefilledPackage, prefilledArea }) {
     phone: '',
     propertyType: 'Kvartira',
     area: prefilledArea || 80,
-    packageType: prefilledPackage || 'Standart Dizayn',
+    packageType: prefilledPackage || 'ВЫГОДНЫЙ',
     comment: ''
   });
 
@@ -61,16 +61,15 @@ export default function OrderForm({ prefilledPackage, prefilledArea }) {
     `.trim();
 
     try {
-      // 1. Send directly to Admin Chat ID
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: ADMIN_CHAT_ID,
-          text: adminMsg,
-          parse_mode: 'HTML'
-        })
-      });
+      // 1. Send directly to Admin Chat ID via CORS-safe GET request
+      const adminUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=${encodeURIComponent(adminMsg)}&parse_mode=HTML`;
+      try {
+        await fetch(adminUrl);
+      } catch (err) {
+        // Beacon fallback if fetch fails due to webview restrictions
+        const img = new Image();
+        img.src = adminUrl;
+      }
 
       // 2. Send confirmation to User if inside Telegram
       if (tgUser?.id) {
@@ -87,18 +86,16 @@ ${formData.comment ? `📝 <b>Izoh:</b> ${formData.comment}` : ''}
 ⏰ Mutaxassisimiz tez orada siz bilan bog'lanadi!
         `.trim();
 
-        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: tgUser.id,
-            text: userMsg,
-            parse_mode: 'HTML'
-          })
-        });
+        const userUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${tgUser.id}&text=${encodeURIComponent(userMsg)}&parse_mode=HTML`;
+        try {
+          await fetch(userUrl);
+        } catch (err) {
+          const img = new Image();
+          img.src = userUrl;
+        }
       }
 
-      // Also trigger sendData if available
+      // 3. Trigger sendData if available
       if (window.Telegram?.WebApp?.sendData) {
         try {
           window.Telegram.WebApp.sendData(JSON.stringify({
@@ -117,7 +114,7 @@ ${formData.comment ? `📝 <b>Izoh:</b> ${formData.comment}` : ''}
         }
       }
     } catch (error) {
-      console.error('Telegram API xatoligi:', error);
+      console.error('Telegram API error:', error);
     } finally {
       setLoading(false);
       setSubmitted(true);
@@ -245,9 +242,10 @@ ${formData.comment ? `📝 <b>Izoh:</b> ${formData.comment}` : ''}
               value={formData.packageType}
               onChange={e => setFormData({ ...formData, packageType: e.target.value })}
             >
-              <option value="Express Dizayn">Express ($12/m²)</option>
-              <option value="Standart Dizayn">Standart ($20/m²)</option>
-              <option value="Premium VIP turnkey">Premium VIP ($35/m²)</option>
+              <option value="START">START ($13.5/m²)</option>
+              <option value="ВЫГОДНЫЙ">ВЫГОДНЫЙ ($16.5/m²)</option>
+              <option value="VIP">VIP ($35/m²)</option>
+              <option value="minimaliz+neoclassica design">minimaliz+neoclassica design ($16.5/m²)</option>
               <option value="Individual loyiha">Individual Loyiha</option>
             </select>
           </div>
