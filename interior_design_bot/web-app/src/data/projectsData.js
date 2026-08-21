@@ -13,18 +13,18 @@ export const PROJECTS = [
     category: "living",
     categoryLabel: "Minimalizm + Neoklassika",
     style: "Minimalizm & Neoklassika",
-    area: "18.5$ / m²",
+    area: "16.5$ / m²",
     duration: "21 kun",
-    pricePerSqM: 18.5,
+    pricePerSqM: 16.5,
     year: "2024",
     location: "Toshkent",
     mainImage: "/photos/minimaliz-neoclassica-design.jpg",
     images: [
       "/photos/minimaliz-neoclassica-design.jpg"
     ],
-    description: "Minimalizm va Neoklassika uslubidagi eksklyuziv interyer dizayni loyihasi. Shaffof narxlash va aniq muddat: 1 m² uchun narx 18.5$, umumiy ishni topshirish muddati 21 kun.",
+    description: "Minimalizm va Neoklassika uslubidagi eksklyuziv interyer dizayni loyihasi. Shaffof narxlash va aniq muddat: 1 m² uchun narx 16.5$, umumiy ishni topshirish muddati 21 kun.",
     highlights: [
-      "Dizayn narxi: 1kv/m uchun 18.5$",
+      "Dizayn narxi: 1kv/m uchun 16.5$",
       "Umumiy ishni tugatish kuni: 21 kun",
       "Minimalizm + Neoklassika uslubi",
       "Full HD 3D Vizualizatsiya",
@@ -128,14 +128,14 @@ export const PRICING_PACKAGES = [
   {
     id: 'minimaliz_neoclassica',
     name: 'minimaliz+neoclassica design',
-    pricePerSqM: 18.5,
+    pricePerSqM: 16.5,
     currency: '$',
     popular: true,
     description: 'Minimalizm + Neoklassika uslubidagi mukammal interyer dizayn loyihasi. Bajarilish muddati 21 kun.',
     features: [
       'Minimalizm + Neoklassika uslubi',
       'Bajarilish muddati: 21 kun',
-      '1kv/m narxi: 18.5$',
+      '1kv/m narxi: 16.5$',
       'Full HD 3D Vizualizatsiyalar',
       'To\'liq Ishchi Chizmalar to\'plami',
       'Materiallar va mebellar spetsifikatsiyasi'
