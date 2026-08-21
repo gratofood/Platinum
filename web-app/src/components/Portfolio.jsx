@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CATEGORIES, PROJECTS } from '../data/projectsData';
-import { Maximize2, Clock, MapPin, Sparkles, X, ChevronRight } from 'lucide-react';
+import { Maximize2, Clock, MapPin, Sparkles, X, ChevronRight, DollarSign } from 'lucide-react';
 
 export default function Portfolio({ onSelectProjectForOrder }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -55,10 +55,17 @@ export default function Portfolio({ onSelectProjectForOrder }) {
               </div>
 
               <div className="project-specs">
-                <div className="spec-item">
-                  <Maximize2 size={14} />
-                  <span>{project.area}</span>
-                </div>
+                {project.pricePerSqM ? (
+                  <div className="spec-item" style={{ color: 'var(--accent-gold-light)', fontWeight: '600' }}>
+                    <DollarSign size={14} />
+                    <span>{project.pricePerSqM}$ / m²</span>
+                  </div>
+                ) : (
+                  <div className="spec-item">
+                    <Maximize2 size={14} />
+                    <span>{project.area}</span>
+                  </div>
+                )}
                 <div className="spec-item">
                   <Clock size={14} />
                   <span>{project.duration}</span>
@@ -98,7 +105,13 @@ export default function Portfolio({ onSelectProjectForOrder }) {
             </h2>
 
             <div className="project-specs" style={{ marginBottom: '16px', borderTop: 'none', paddingTop: 0 }}>
-              <div className="spec-item"><Maximize2 size={14} /> <span>{activeModalProject.area}</span></div>
+              {activeModalProject.pricePerSqM ? (
+                <div className="spec-item" style={{ color: 'var(--accent-gold-light)', fontWeight: '600' }}>
+                  <DollarSign size={14} /> <span>{activeModalProject.pricePerSqM}$ / m²</span>
+                </div>
+              ) : (
+                <div className="spec-item"><Maximize2 size={14} /> <span>{activeModalProject.area}</span></div>
+              )}
               <div className="spec-item"><Clock size={14} /> <span>{activeModalProject.duration}</span></div>
               <div className="spec-item"><MapPin size={14} /> <span>{activeModalProject.location}</span></div>
             </div>

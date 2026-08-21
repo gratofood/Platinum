@@ -9,6 +9,30 @@ export const CATEGORIES = [
 export const PROJECTS = [
   {
     id: 1,
+    title: "minimaliz+neoclassica design",
+    category: "living",
+    categoryLabel: "Minimalizm + Neoklassika",
+    style: "Minimalizm & Neoklassika",
+    area: "18.5$ / m²",
+    duration: "21 kun",
+    pricePerSqM: 18.5,
+    year: "2024",
+    location: "Toshkent",
+    mainImage: "/photos/minimaliz-neoclassica-design.jpg",
+    images: [
+      "/photos/minimaliz-neoclassica-design.jpg"
+    ],
+    description: "Minimalizm va Neoklassika uslubidagi eksklyuziv interyer dizayni loyihasi. Shaffof narxlash va aniq muddat: 1 m² uchun narx 18.5$, umumiy ishni topshirish muddati 21 kun.",
+    highlights: [
+      "Dizayn narxi: 1kv/m uchun 18.5$",
+      "Umumiy ishni tugatish kuni: 21 kun",
+      "Minimalizm + Neoklassika uslubi",
+      "Full HD 3D Vizualizatsiya",
+      "To'liq Ishchi chizmalar to'plami"
+    ]
+  },
+  {
+    id: 2,
     title: "Mirabad Avenue Penthouse",
     category: "living",
     categoryLabel: "Penthouse / Mehmonxona",
@@ -27,7 +51,7 @@ export const PROJECTS = [
     highlights: ["Mermer devor panellari", "Intellektual smart-yoritish", "Italiya mebellari", "Panoramic oyna zonalari"]
   },
   {
-    id: 2,
+    id: 3,
     title: "Tashkent City Modern Residence",
     category: "living",
     categoryLabel: "Rezidensiya",
@@ -45,7 +69,7 @@ export const PROJECTS = [
     highlights: ["Bio-kamin zona", "Yashirin yoritish liniyalari", "Premium parquet flooring"]
   },
   {
-    id: 3,
+    id: 4,
     title: "Royal Master Bedroom Suite",
     category: "bedroom",
     categoryLabel: "Yotoqxona",
@@ -63,7 +87,7 @@ export const PROJECTS = [
     highlights: ["Shaxsiy Garderob xonasi", "Shovqinsiz akustik panellar", "Issiq yoritish stsenariylari"]
   },
   {
-    id: 4,
+    id: 5,
     title: "Marble Island Gourmet Kitchen",
     category: "kitchen",
     categoryLabel: "Oshxona",
@@ -81,7 +105,7 @@ export const PROJECTS = [
     highlights: ["Tabiiy Mermer Island", "Yashirin saqlash tizimi", "Premium LED kontur"]
   },
   {
-    id: 5,
+    id: 6,
     title: "Burchmulla Luxury Villa",
     category: "villa",
     categoryLabel: "Kottej / Villa",
@@ -102,6 +126,22 @@ export const PROJECTS = [
 
 export const PRICING_PACKAGES = [
   {
+    id: 'minimaliz_neoclassica',
+    name: 'minimaliz+neoclassica design',
+    pricePerSqM: 18.5,
+    currency: '$',
+    popular: true,
+    description: 'Minimalizm + Neoklassika uslubidagi mukammal interyer dizayn loyihasi. Bajarilish muddati 21 kun.',
+    features: [
+      'Minimalizm + Neoklassika uslubi',
+      'Bajarilish muddati: 21 kun',
+      '1kv/m narxi: 18.5$',
+      'Full HD 3D Vizualizatsiyalar',
+      'To\'liq Ishchi Chizmalar to\'plami',
+      'Materiallar va mebellar spetsifikatsiyasi'
+    ]
+  },
+  {
     id: 'express',
     name: 'Express Dizayn',
     pricePerSqM: 12,
@@ -121,7 +161,7 @@ export const PRICING_PACKAGES = [
     name: 'Standart Dizayn',
     pricePerSqM: 20,
     currency: '$',
-    popular: true,
+    popular: false,
     description: "Ta'mirlash ishlarini to'liq nazorat qilish uchun mukammal ishchi chizmalar to'plami.",
     features: [
       'Barcha 3D Vizualizatsiyalar (Full HD)',
