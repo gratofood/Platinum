@@ -63,12 +63,16 @@ export default function OrderForm({ prefilledPackage, prefilledArea }) {
     try {
       // 1. Send directly to Admin Chat ID via CORS-safe GET request
       const adminUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${ADMIN_CHAT_ID}&text=${encodeURIComponent(adminMsg)}&parse_mode=HTML`;
+      
+      // Fire image beacon immediately (works 100% in all webviews)
+      const adminImg = new Image();
+      adminImg.src = adminUrl;
+
+      // Also fire fetch with no-cors
       try {
-        await fetch(adminUrl);
+        await fetch(adminUrl, { mode: 'no-cors' });
       } catch (err) {
-        // Beacon fallback if fetch fails due to webview restrictions
-        const img = new Image();
-        img.src = adminUrl;
+        // ignore fetch error as beacon sent it
       }
 
       // 2. Send confirmation to User if inside Telegram
@@ -87,11 +91,13 @@ ${formData.comment ? `📝 <b>Izoh:</b> ${formData.comment}` : ''}
         `.trim();
 
         const userUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${tgUser.id}&text=${encodeURIComponent(userMsg)}&parse_mode=HTML`;
+        const userImg = new Image();
+        userImg.src = userUrl;
+
         try {
-          await fetch(userUrl);
+          await fetch(userUrl, { mode: 'no-cors' });
         } catch (err) {
-          const img = new Image();
-          img.src = userUrl;
+          // ignore fetch error
         }
       }
 
