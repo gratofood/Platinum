@@ -251,8 +251,6 @@ ${formData.comment ? `📝 <b>Izoh:</b> ${formData.comment}` : ''}
               <option value="START">START ($13.5/m²)</option>
               <option value="ВЫГОДНЫЙ">ВЫГОДНЫЙ ($16.5/m²)</option>
               <option value="VIP">VIP ($35/m²)</option>
-              <option value="minimaliz+neoclassica design">minimaliz+neoclassica design ($16.5/m²)</option>
-              <option value="Individual loyiha">Individual Loyiha</option>
             </select>
           </div>
         </div>
