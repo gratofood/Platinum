@@ -34,6 +34,28 @@ export const PROJECTS = [
   },
   {
     id: 2,
+    title: "Neoclassica Yotoqxona",
+    category: "bedroom",
+    categoryLabel: "Yotoqxona / Neoklassika",
+    style: "Neoklassika",
+    area: "35 m²",
+    duration: "20 kun",
+    year: "2024",
+    location: "Toshkent",
+    mainImage: "/photos/neoclassica-yotoqxona.jpg",
+    images: [
+      "/photos/neoclassica-yotoqxona.jpg"
+    ],
+    description: "Nefis va nafis neoklassik uslubda ishlangan premium yotoqxona interyer dizayni. Muloyim ranglar gammasi, nozik devor moldlinglari hamda qulay yoritish ssenariylari bilan boyitilgan.",
+    highlights: [
+      "Neoklassik uslub va devor moldlinglari",
+      "Keng va shinam yotoqxona zonasi",
+      "Eksklyuziv mebel va yoritish elementlari",
+      "Full HD 3D Vizualizatsiya"
+    ]
+  },
+  {
+    id: 3,
     title: "Mirabad Avenue Penthouse",
     category: "living",
     categoryLabel: "Penthouse / Mehmonxona",
