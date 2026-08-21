@@ -18,9 +18,9 @@ export const PROJECTS = [
     pricePerSqM: 16.5,
     year: "2024",
     location: "Toshkent",
-    mainImage: "/photos/minimaliz-neoclassica-design.jpg",
+    mainImage: "/photos/minimaliz-neoclassica-design.jpg?v=3",
     images: [
-      "/photos/minimaliz-neoclassica-design.jpg"
+      "/photos/minimaliz-neoclassica-design.jpg?v=3"
     ],
     description: "Minimalizm va Neoklassika uslubidagi eksklyuziv interyer dizayni loyihasi. 1 m² narxi 16.5$, bajarilish muddati 21 kun. Loyihaga 3D Vizualizatsiya, 3D Virtual tur, to'liq ishchi chizmalar, barcha reja va sxemalar, mebel konstruksiyasi hamda smeta va materiallar kartasi kiradi.",
     highlights: [
